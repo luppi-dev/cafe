@@ -44,3 +44,7 @@ CREATE TABLE income_distribution_ (
     percentage numeric(5, 2) NOT NULL,
     created_at DATE DEFAULT NOW()
 );
+
+ALTER TABLE user_ ADD UNIQUE(exposed_id);
+ALTER TABLE financial_goal_ ADD UNIQUE(exposed_id);
+ALTER TABLE income_distribution_ ADD UNIQUE(exposed_id);
