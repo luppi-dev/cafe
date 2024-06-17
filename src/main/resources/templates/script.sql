@@ -48,3 +48,12 @@ CREATE TABLE income_distribution_ (
 ALTER TABLE user_ ADD UNIQUE(exposed_id);
 ALTER TABLE financial_goal_ ADD UNIQUE(exposed_id);
 ALTER TABLE income_distribution_ ADD UNIQUE(exposed_id);
+
+ALTER TABLE user_
+ALTER COLUMN hashed_password TYPE BYTEA
+USING hashed_password::bytea;
+
+ALTER TABLE user_
+RENAME COLUMN hashed_password TO hash;
+ALTER TABLE user_
+RENAME COLUMN salt_hash TO salt;
