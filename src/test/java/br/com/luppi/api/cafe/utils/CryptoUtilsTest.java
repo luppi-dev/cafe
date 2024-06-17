@@ -16,18 +16,18 @@ public class CryptoUtilsTest {
     @Test
     public void givenSamePasswordAndSalt_thenHashIsCorrect() {
         byte[] hash = CryptoUtils.hashWithBcrypt(PASSWORD_1, SALT_1);
-        Assertions.assertTrue(CryptoUtils.verify(hash, PASSWORD_1, SALT_1));
+        Assertions.assertTrue(CryptoUtils.verify(PASSWORD_1, hash, SALT_1));
     }
 
     @Test
     public void givenDifferentPassword_thenHashIsIncorrect() {
         byte[] hash = CryptoUtils.hashWithBcrypt(PASSWORD_1, SALT_1);
-        Assertions.assertFalse(CryptoUtils.verify(hash, PASSWORD_2, SALT_1));
+        Assertions.assertFalse(CryptoUtils.verify(PASSWORD_2, hash, SALT_1));
     }
 
     @Test
     public void givenDifferentSalt_thenHashIsIncorrect() {
        byte[] hash = CryptoUtils.hashWithBcrypt(PASSWORD_1, SALT_1);
-       Assertions.assertFalse(CryptoUtils.verify(hash, PASSWORD_1, SALT_2));
+       Assertions.assertFalse(CryptoUtils.verify(PASSWORD_1, hash, SALT_2));
     }
 }
