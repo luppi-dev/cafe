@@ -22,7 +22,7 @@ public class CryptoUtils {
         return BCrypt.generate(contentBytes, salt, NUM_OF_ITERATIONS);
     }
 
-    public static boolean verify(byte[] hashToVerify, String content, byte[] salt) {
+    public static boolean verify(String strToVerify, byte[] hash, byte[] salt) {
         return Arrays.equals(hashToVerify, hashWithBcrypt(content,salt));
     }
 }
