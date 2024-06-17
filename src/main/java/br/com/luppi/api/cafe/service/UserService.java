@@ -16,6 +16,7 @@ public class UserService {
     private UserRepository repository;
 
     public void create(NewUserRequest request) {
+        // TODO: validate email format
         byte[] salt = CryptoUtils.generateSalt();
         byte[] hash = CryptoUtils.hashWithBcrypt(request.getPassword(), salt);
         User user = new User();
